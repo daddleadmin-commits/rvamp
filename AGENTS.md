@@ -32,7 +32,8 @@
 ## Content and indexing
 
 - The Rvamp holding page should use the user's logo and simple “Coming soon” copy. Logo reference: https://www.figma.com/design/WnNAZ3Ss3MpWh53SUA4a6Q/BRAND?node-id=2503-86
-- Keep the pub demo fictional: use The Bird Pub name and our own bird logo. Do not use The Hawke's photos.
+- Keep the pub demo fictional: use The Bird Pub name and our own bird logo. On 25 October 2026 the user confirmed permission to use The Hawke's real photos for this pitch/demo, superseding the earlier prohibition. Keep source records and available credits.
+- The pub site is mobile first, simple and food/music led, with a swipeable content row and reusable Tonight at The Bird card. Instagram-to-website updating is the proposed content flow; a source scrape is not a live feed integration.
 - The Hawke's menu may be used as demo input when showing the demo to him.
 - Keep the pub demo and all preview/staging deployments out of search results using a robots meta `noindex`, an `X-Robots-Tag` response header, and `robots.txt` with `Disallow: /`. These are indexing controls, not access protection.
 - Preserve the existing indexing controls on the holding page unless the user requests a change.
