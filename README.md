@@ -17,10 +17,21 @@ Open http://127.0.0.1:4173/. No dependencies or build command are required.
 - The user explicitly chose to keep this change as a preview. PR #1 remains open: https://github.com/daddleadmin-commits/rvamp/pull/1
 - The default branch `main` has not been merged or changed for this holding-page release.
 - Vercel project: `rvamp`, ID `prj_Qv8m1YZlM09Z9Q8yvwFCiNxLuHiX`, under the `daddle` team.
-- This Vercel project is paused. Its default domain was checked and returns HTTP 503 with `DEPLOYMENT_PAUSED`.
-- One initial source-file deployment (`dpl_FHom2Lw7oQGmoQB9hFnAuXAzSZgm`) unexpectedly received target `production` when the deployment API target was omitted. It is blocked from serving by the project pause. Cancellation was attempted after it had finished and was not available.
-- A subsequent deployment with explicit target `staging` (`dpl_4DWm2UP1f9wuT7p2qqrcjvgcR8G6`) was blocked because the project is paused. There is no working hosted preview yet; use the local preview.
-- GitHub integration is not linked to the `rvamp` Vercel project. The attempted API Git connection failed because a GitHub integration is required. Deployment source files came from the committed feature branch, with its Git metadata recorded in Vercel.
+- The unintended production deployment was deleted, the project was resumed, and the production deployment list was verified empty.
+- Working staging URL: https://rvamp-staging-daddle.vercel.app/ . It points to Preview deployment `dpl_EuK2GMapgHcbpT8ZckE3k38DkuFh`, built from commit `b8f9dbaa756324a7e725335e3d16b4e62ff19703` on `codex/rvamp-holding-page`.
+- The staging URL requires Vercel authentication. The authenticated page returned HTTP 200, its robots meta and `X-Robots-Tag` both specify `noindex, nofollow`, `robots.txt` disallows all crawling, and the hosted logo matches the local Figma export byte for byte.
+- GitHub integration is not linked to the `rvamp` Vercel project yet. The current Preview was deployed with the authenticated CLI from the committed feature branch. Git pushes alone do not currently deploy this project.
 - `rvamp.me` is not attached to this project, and no apex DNS record was added. The Spaceship nameservers, email records, and existing `thebird` CNAME were not changed.
 
-Before enabling hosted previews, resolve the initial production deployment and Git integration. Do not unpause the project or attach the live domain without checking its production state and obtaining the user's live-release approval. Use explicit `target: "staging"` for Vercel API previews; never omit the target.
+## Repeatable preview deployment
+
+Commit and push the feature branch to this repository first. Inspect the explicit project, then deploy to Preview:
+
+```sh
+npx --yes vercel@65.2.0 project inspect rvamp --scope daddle --non-interactive
+npx --yes vercel@65.2.0 deploy --project prj_Qv8m1YZlM09Z9Q8yvwFCiNxLuHiX --scope daddle --environment preview --non-interactive --yes --json
+```
+
+After confirming the new deployment is ready and is a Preview, update the `rvamp-staging-daddle.vercel.app` alias to it. Use `vercel curl` with the exact deployment or staging URL for authenticated verification; an HTTP 200 from a login page is not verification of the site.
+
+The CLI's `--environment preview` is explicit. For the separate Vercel API tool, use `target: "staging"`; it rejects `"preview"` and omitting the target previously created a production deployment. Do not merge to `main`, promote to production, or attach the live domain without explicit user approval.

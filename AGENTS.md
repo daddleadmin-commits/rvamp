@@ -21,6 +21,7 @@
 - Treat merges or pushes to the production branch as potential live deployments. Do not merge to that branch, deploy to production, or promote a deployment without explicit user authorization for the release.
 - Do not assume staging or release protection exists. Verify the actual Vercel/Git configuration before relying on it.
 - Set `target: "staging"` explicitly for preview deployments through the Vercel deployment API. In this connection, omitting the target created a production deployment; `"preview"` is rejected by the API. Never rely on target defaults.
+- The verified CLI path is `vercel deploy --project prj_Qv8m1YZlM09Z9Q8yvwFCiNxLuHiX --scope daddle --environment preview`. See README.md for the pinned CLI command and current integration status. Update `rvamp-staging-daddle.vercel.app` only to a verified Preview deployment. Git pushes do not deploy automatically until Git integration is connected.
 
 ## Domains and email
 
