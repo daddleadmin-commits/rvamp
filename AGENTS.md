@@ -20,6 +20,7 @@
 - Keep a stable staging URL for each site when configuring the deployment workflow; Vercel preview URLs are sufficient until staging is configured.
 - Treat merges or pushes to the production branch as potential live deployments. Do not merge to that branch, deploy to production, or promote a deployment without explicit user authorization for the release.
 - Do not assume staging or release protection exists. Verify the actual Vercel/Git configuration before relying on it.
+- Set `target: "staging"` explicitly for preview deployments through the Vercel deployment API. In this connection, omitting the target created a production deployment; `"preview"` is rejected by the API. Never rely on target defaults.
 
 ## Domains and email
 
