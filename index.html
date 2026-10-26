@@ -4,27 +4,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Rvamp. Coming soon.">
+    <meta name="theme-color" content="#e5e0d8">
     <title>Rvamp — Coming soon</title>
     <style>
+      * { box-sizing: border-box; }
+      html { background: #e5e0d8; }
       body {
         margin: 0;
         min-height: 100svh;
         display: grid;
         place-items: center;
-        background: #f7f5ef;
-        color: #202020;
+        background: #e5e0d8;
+        color: #1f1f1f;
         font-family: system-ui, sans-serif;
         text-align: center;
       }
-      main { padding: 2rem; }
-      h1 { font-size: clamp(3rem, 10vw, 6rem); margin: 0 0 1rem; }
-      p { font-size: 1.25rem; }
+      main { position: relative; width: 400px; max-width: calc(100vw - 3rem); }
+      h1 { margin: 0; }
+      img { display: block; max-width: 100%; height: auto; }
+      p {
+        position: absolute;
+        top: 70%;
+        width: 100%;
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        letter-spacing: 0.08em;
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1>Hello world.</h1>
-      <p>Rvamp. Coming soon.</p>
+      <h1><img src="/assets/rvamp-logo.png" alt="Rvamp" width="400" height="400"></h1>
+      <p>Coming soon.</p>
     </main>
   </body>
 </html>
