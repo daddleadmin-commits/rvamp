@@ -1,5 +1,11 @@
 # Rvamp / Daddle project instructions
 
+## GitHub access identity
+
+- Use the Daddle admin GitHub account for this project (the user refers to it as `daddleadmin`; the verified GitHub login is `daddleadmin-commits`). Never use the personal `davidesanseverino` account for repository access, GitHub API calls, pushes or pull requests for these sites.
+- Before GitHub mutations, verify the authenticated login with `gh api user --jq .login` and verify `git remote -v`. The intended repositories are `daddleadmin-commits/rvamp` (holding page) and `daddleadmin-commits/rvamp-sub` (pub demo).
+- If the active account differs, select the existing authenticated Daddle admin account with `gh auth switch --hostname github.com --user daddleadmin-commits` and verify again. Ensure the Git transport or connector uses that same account; do not fall back to personal credentials, change repository visibility, or grant new access to work around an authentication failure. If the Daddle account is unavailable, ask the user to reconnect it without sharing tokens in chat.
+
 ## Repository and domain ownership
 
 | Site | GitHub repository | Intended live domain |
